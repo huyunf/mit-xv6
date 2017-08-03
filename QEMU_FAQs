@@ -1,0 +1,18 @@
+1. Prepare QEMU & toolchain:
+https://pdos.csail.mit.edu/6.828/2016/tools.html
+
+2. Run QEMU in console-only envrionment:
+  (1) get sgabios from https://github.com/qemu/sgabios
+      compile got sgabios.bin
+      put sgabios.bin into $PATH
+  (2) qemu-system-i386 -nographic -device sga [image]
+  
+3. The problem of this method is that could not quit from console, 
+    solution is use telnet to monitor the qemu 
+    
+    qemu-system-i386 -nographic -device sga -monitor telnet:127.0.0.1:1234,server,nowait [image]
+    
+    open another console window, telnet 127.0.0.1 1234, and then you could got QEMU command line, then quit could exit the previous qemu
+    
+    
+  
